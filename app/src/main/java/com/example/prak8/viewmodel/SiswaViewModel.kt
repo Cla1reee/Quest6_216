@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.update
 
 class SiswaViewModel : ViewModel() {
     private val _statusUI = MutableStateFlow(value = Siswa())
-    val _statusUI = _statusUI.asStateFlow()
+    val statusUI = _statusUI.asStateFlow()
 
     fun setSiswa(ls:MutableList<String>){
         _statusUI.update { statusSaatIni ->
