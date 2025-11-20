@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,40 +30,41 @@ fun TampilSiswa(
     statusUiSiswa: Siswa,
     onBackButtonClick: () -> Unit
 ) {
-    val item = listOf(
-        Pair(stringResource("Nama Lengkap"), statusUiSiswa.nama),
-        Pair(stringResource("Jenis Kelamin"), statusUiSiswa.gender),
-        Pair(stringResource("Alamat"), statusUiSiswa.alamat)
+    val listDataSiswa = listOf(
+        Pair(stringResource(R.string.nama), statusUiSiswa.nama),
+        Pair(stringResource(R.string.gender), statusUiSiswa.gender),
+        Pair(stringResource(R.string.alamat), statusUiSiswa.alamat)
     )
 
-    Scaffold(modifier = Modifier,
-        {
+    Scaffold(
+        topBar = {
             TopAppBar(
                 title = { Text(stringResource(id = R.string.app_name), color = Color.White) },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(colorResource(id = R.color.purple_500)),
             )
-        }) { isiRuang ->
+        }
+    ) { isiRuang ->
         Column(
             modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Column(
-                modifier = Modifier.padding(dimensionResource(16dp)),
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(10dp))
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                items.forEach { item ->
+                listDataSiswa.forEach { item ->
                     Column {
                         Text(item.first.uppercase(), fontSize = 16.sp)
                         Text(text = item.second, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                     }
-                    Divider(thickness = dimensionResource(1dp))
+                    HorizontalDivider(thickness = 1.dp)
                 }
-                Spacer(modifier = Modifier.height(dimensionResource(10dp)))
+                Spacer(modifier = Modifier.height(10.dp))
                 Button(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = onBackButtonClicked
+                    onClick = onBackButtonClick
                 ) {
-                    Text(text = stringResource("Back"))
+                    Text(text = stringResource(R.string.back))
                 }
             }
         }
