@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.RadioButton
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -74,8 +75,26 @@ fun FormSiswa(
                             txtGender = item
                         }
                     ),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(
+                            selected = txtGender == item,
+                            onClick = {
+                                txtGender = item
+                            }
+                        )
+                        Text(item)
+                    }
                 }
             }
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(5.dp)
+                    .width(250.dp),
+                thickness = dimensionResource(1dp),
+                color = Color.Blue
+            )
+            OutlinedTextField()
         }
     }
 }
