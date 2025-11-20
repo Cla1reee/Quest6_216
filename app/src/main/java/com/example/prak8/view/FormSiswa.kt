@@ -18,6 +18,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.ui.res.colorResource
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,6 +35,7 @@ fun FormSiswa(
 
     Scaffold (modifier = Modfier,
         { TopAppBar(title = { Text(stringResource(id = R.string.app_name), color = Color.White)},
+            colors = TopAppBarDefaults.mediumTopAppBarColors(colorResource(id = R.color.purple_500))
         )
         }) { isiRuang ->
 
@@ -96,7 +98,7 @@ fun FormSiswa(
                     txtAlamat = it
                 }
             )
-            spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(20.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(1f),
                 enabled = txtAlamat.isNotEmpty(),
